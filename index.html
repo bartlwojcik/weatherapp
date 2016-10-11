@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 col-xs-offset-3">
-                    <header>the weather app</header>
+                    <header><a href="index.html">the weather app</a></header>
                     <form>
                         <div class="col-xs-6">
                             <p class="big"><i class="fa fa-map-o" aria-hidden="true"></i> use geolocalisation</p>
@@ -24,14 +24,15 @@
                         </div>
                         <div class="col-xs-6">
                             <p class="big"><i class="fa fa-keyboard-o" aria-hidden="true"></i> type in your city name below:</p>
-                            <input type="text" name="cityName">
-                            <button type="button" class="btn btn-success"><i class="fa fa-cloud" aria-hidden="true"></i></button>
+                            <input type="text" name="city" id="citySearch">
+                            <button type="click" class="btn btn-success" id="btn-city"><i class="fa fa-cloud" aria-hidden="true"></i></button>
                         </div>
                     </form>
-                    <div class="col-xs-4 col-xs-offset-4">
-                        <div id="coordinates"></div>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <!--<div id="coordinates"></div>-->
                         <div id="cityName"></div>
                         <div id="temperature"></div>
+                        <div id="icon"></div>
                         <div id="weather"></div>
                     </div>
                 </div>
@@ -45,6 +46,5 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 
         <script src="app.js"></script>
-        <script id="apiCall" src=""></script>
     </body>
 </html>

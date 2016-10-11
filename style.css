@@ -9,6 +9,14 @@ header {
     margin: 30px 0px 30px 0px;
 }
 
+header a {
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: none;
+}
+
 form {
     text-align: center;
 }
@@ -17,7 +25,28 @@ button {
     margin-bottom: 30px;
 }
 
-p {
-    font-size: 123%;
+#coordinates {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#cityName {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 170%;
+}
+
+#temperature {
+    text-align: center;
+    font-size: 300%;
+}
+
+#icon {
+    text-align: center;
+}
+
+#weather {
+    text-align: center;
+    font-size: 150%;
 }
 
