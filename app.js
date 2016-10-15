@@ -8,7 +8,10 @@ $(function () {
     
     $('#btn-geoloc').on('click', function () {
         
-        name.html('loading...');
+        name.html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>');
+        t.html('');
+        icon.html('');
+        weather.html('');
         
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
@@ -36,7 +39,10 @@ $(function () {
     $('#btn-city').on('click', function () {
         
         var search = $('#citySearch').val();
-        name.html('loading...');
+        name.html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>');
+        t.html('');
+        icon.html('');
+        weather.html('');
         
         $.ajax({
             type: "GET",
