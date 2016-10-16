@@ -28,7 +28,6 @@ $(function () {
         }
 
         function showPosition(position) {
-            /*coordinates.html('latitude: ' + position.coords.latitude + '<br>longitude: ' + position.coords.longitude);*/
 
             $.ajax({
                 type: "GET",
@@ -40,7 +39,7 @@ $(function () {
                     t.html(tempRound + '&deg;C');
                     icon.html("<img src=\"http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\" width='90px'>");
                     weather.html(data.weather[0].main);
-                },
+                  },
                 dataType: 'jsonp'
             });
         }
@@ -64,7 +63,7 @@ $(function () {
                 t.html(tempRound + '&deg;C');
                 icon.html("<img src=\"http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\" width='90px'>");
                 weather.html(data.weather[0].main);
-            },
+              },
             dataType: 'jsonp'
         });
 
