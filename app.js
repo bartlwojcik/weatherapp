@@ -1,11 +1,12 @@
 $(function () {
-    //var coordinates = $('#coordinates');
+
     var name = $('#cityName');
     var t = $('#temperature');
     var icon = $('#icon');
     var weather = $('#weather');
     var apiKey = '277b74aa77fdfe56ca1ebdf913639f93';
 
+    //disable default result of enter keydown
     $(window).on('keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault();
@@ -13,6 +14,7 @@ $(function () {
       }
     });
 
+    //working with geolocation
     $('#btn-geoloc').on('click', function () {
 
         $('#citySearch').val('');
@@ -45,6 +47,7 @@ $(function () {
         }
     });
 
+    //working with input box
     $('#btn-city').on('click keydown', function () {
 
         var search = $('#citySearch').val();
@@ -64,9 +67,12 @@ $(function () {
                 icon.html("<img src=\"http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\" width='90px'>");
                 weather.html(data.weather[0].main);
               },
-            dataType: 'jsonp'
+              error: function() {
+                name.html('<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i><p> city name is not correct</p>')
+              },
+              timeout: 3000,
+              dataType: 'jsonp'
         });
-
         $('#citySearch').val('');
     });
 });
