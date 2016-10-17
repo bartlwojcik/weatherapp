@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         name.innerHTML = 'your browser doesn\'t support geolocation';
       }
 
-      unction showPosition(position) {
+      function showPosition(position) {
         fetch('http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=metric&appid=' + apiKey).then(function(response) {
           if (response.status !== 200) {
             console.log('problem: ' + response.status);
