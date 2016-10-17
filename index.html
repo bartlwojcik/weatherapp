@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="pl_PL">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>the weather app</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Poppins&amp;subset=latin-ext" rel="stylesheet">
-        <script src="https://use.fontawesome.com/bae9361d4d.js"></script>
-    </head>
-    <body>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <header>the weather app</header>
-                    <form>
-                        <div class="col-xs-6">
-                            <p class="big"><i class="fa fa-map-o" aria-hidden="true"></i> use geolocalisation</p>
-                            <button type="button" class="btn btn-success" id="btn-geoloc"><i class="fa fa-cloud" aria-hidden="true"></i></button>
-                        </div>
-                        <div class="col-xs-6">
-                            <p class="big"><i class="fa fa-keyboard-o" aria-hidden="true"></i> type in your city name below:</p>
-                            <input type="text" placeholder="e.g. London" name="city" id="citySearch">
-                            <button type="button" class="btn btn-success" id="btn-city"><i class="fa fa-cloud" aria-hidden="true"></i></button>
-                        </div>
-                    </form>
-                    <div class="col-xs-6 col-xs-offset-3">
-                        <div id="cityName"></div>
-                        <div id="temperature"></div>
-                        <div id="icon"></div>
-                        <div id="weather"></div>
-                    </div>
-                </div>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>the weather app</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&amp;subset=latin-ext" rel="stylesheet">
+    <script src="https://use.fontawesome.com/bae9361d4d.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <header>the weather app</header>
+          <form id="form1">
+            <div class="col-xs-6">
+              <p class="big"><i class="fa fa-map-o" aria-hidden="true"></i> use geolocalisation</p>
+              <button type="button" class="btn btn-success" id="btn-geoloc"><i class="fa fa-cloud" aria-hidden="true"></i></button>
             </div>
+            <div class="col-xs-6">
+              <p class="big"><i class="fa fa-keyboard-o" aria-hidden="true"></i> type in your city name below:</p>
+              <input type="text" placeholder="e.g. London" name="city" id="citySearch" onkeypress="return event.keyCode!=13">
+              <button type="button" class="btn btn-success" id="btn-city"><i class="fa fa-cloud" aria-hidden="true"></i></button>
+            </div>
+          </form>
+          <div class="col-xs-6 col-xs-offset-3">
+            <div id="cityName"></div>
+            <div id="temperature"></div>
+            <div id="icon"></div>
+            <div id="weather"></div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
-
-        <script src="app.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+    <script src="app.js"></script>
+  </body>
 </html>

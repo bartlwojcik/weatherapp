@@ -1,78 +1,79 @@
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-    var name = $('#cityName');
-    var t = $('#temperature');
-    var icon = $('#icon');
-    var weather = $('#weather');
-    var apiKey = '277b74aa77fdfe56ca1ebdf913639f93';
+  var name = document.getElementById('cityName');
+  var t = document.getElementById('temperature');
+  var icon = document.getElementById('icon');
+  var weather = document.getElementById('weather');
+  var btnGeoloc = document.getElementById('btn-geoloc');
+  var btnCity = document.getElementById('btn-city');
+  var inputBox = document.getElementById('citySearch');
+  var apiKey = '277b74aa77fdfe56ca1ebdf913639f93';
+  var form = document.getElementById('form1');
 
-    //disable default result of enter keydown
-    $(window).on('keydown', function(e) {
-      if (e.keyCode == 13) {
-        e.preventDefault();
-        return false;
+  //loading screen
+  function loading() {
+    name.innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>';
+    t.innerHTML = '';
+    icon.innerHTML = '';
+    weather.innerHTML = '';
+    inputBox.value = '';
+  };
+
+  //displaying results from openweatherapi
+  function view(results) {
+    name.innerHTML = results.name;
+    var temp = results.main.temp.toFixed(0);
+    t.innerHTML = temp + '&deg;C';
+    icon.innerHTML = '<img src="http://openweathermap.org/img/w/' + results.weather[0].icon + '.png" width = "90px">'
+    weather.innerHTML = results.weather[0].main;
+  };
+
+  //getting data using geolocalisation
+    function getByGeoloc() {
+      loading();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        name.innerHTML = 'your browser doesn\'t support geolocation';
+      }
+
+      unction showPosition(position) {
+        fetch('http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&units=metric&appid=' + apiKey).then(function(response) {
+          if (response.status !== 200) {
+            console.log('problem: ' + response.status);
+          }
+          response.json().then(function(data) {
+            view(data);
+          });
+        }).catch(function(err) {
+          console.log('fetch error: ', err);
+        });
+      }
+    };
+
+    //getting data using city name from input box
+    function getByCityName() {
+      var search = inputBox.value;
+      loading();
+
+      fetch('http://api.openweathermap.org/data/2.5/weather?q=' + search + '&units=metric&appid=' + apiKey).then(function(response) {
+        if (response.status !== 200) {
+          console.log('problem: ' + response.status);
+        }
+        response.json().then(function(data) {
+          view(data);
+        });
+      }).catch(function(err) {
+        console.log('fetch error: ', err);
+      });
+    };
+
+    //actions performed when button is clicked or enter pressed
+    btnGeoloc.addEventListener('click', getByGeoloc, false);
+    btnCity.addEventListener('click', getByCityName, false);
+    form.addEventListener('keypress', function(event) {
+      if (event.keyCode == 13) {
+        getByCityName();
       }
     });
-
-    //working with geolocation
-    $('#btn-geoloc').on('click', function () {
-
-        $('#citySearch').val('');
-        name.html('<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>');
-        t.html('');
-        icon.html('');
-        weather.html('');
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            coordinates.html('your browser doesn\t support geolocation');
-        }
-
-        function showPosition(position) {
-
-            $.ajax({
-                type: "GET",
-                url: "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=metric&appid=" + apiKey,
-                success: function (data) {
-                    name.html(data.name);
-                    var temp = data.main.temp;
-                    var tempRound = temp.toFixed(0);
-                    t.html(tempRound + '&deg;C');
-                    icon.html("<img src=\"http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\" width='90px'>");
-                    weather.html(data.weather[0].main);
-                  },
-                dataType: 'jsonp'
-            });
-        }
-    });
-
-    //working with input box
-    $('#btn-city').on('click keydown', function () {
-
-        var search = $('#citySearch').val();
-        name.html('<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>');
-        t.html('');
-        icon.html('');
-        weather.html('');
-
-        $.ajax({
-            type: "GET",
-            url: "http://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=metric&appid=" + apiKey,
-            success: function (data) {
-                name.html(data.name);
-                var temp = data.main.temp;
-                var tempRound = temp.toFixed(0);
-                t.html(tempRound + '&deg;C');
-                icon.html("<img src=\"http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\" width='90px'>");
-                weather.html(data.weather[0].main);
-              },
-              error: function() {
-                name.html('<i class="fa fa-times-circle fa-2x" aria-hidden="true"></i><p> city name is not correct</p>')
-              },
-              timeout: 3000,
-              dataType: 'jsonp'
-        });
-        $('#citySearch').val('');
-    });
-});
+}, false);
