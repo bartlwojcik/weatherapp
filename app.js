@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + search + '&units=metric&appid=' + apiKey).then(function(response) {
         if (response.status !== 200) {
           console.log('problem: ' + response.status);
+          console.log('try again.');
+          t.innerHTML = '<p>Wrong city name.</p>';
         }
         response.json().then(function(data) {
           view(data);

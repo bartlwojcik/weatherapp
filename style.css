@@ -45,3 +45,21 @@ button {
     text-align: center;
     font-size: 150%;
 }
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  height: 60px;
+}
+
+footer p {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
